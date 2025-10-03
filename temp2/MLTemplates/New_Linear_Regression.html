@@ -1,0 +1,98 @@
+{% extends 'Base/amicia_base.html' %}
+
+{% block content %}
+
+    {% load static %}  <!-- Needed when loading ML_util.js -->
+    {% if data_id %}
+        <h2 class="text-center" style="height: 43px;">Worked! {{ data_id }}</h2>
+
+<!---------------------------------------------------------------------------------------------------------------->
+
+
+        <main role="main">
+        <div class="container">
+
+        <div class="container" style="transform: translateX(-10px);">  <!-- Container 1 -->
+
+          <h2 class="text-center" style="height: 10px;"></h2>
+          <h2 class="text-center 10px">{{ title }}</h2>
+
+          <!-- Amicia_CSS_Fonts Example -->
+          <link href="{% static 'core/amicia_stylesheet.css' %}" rel="stylesheet">
+          <!-- JS Functions Example -->
+          <button id="sample_button" class="special_button">CLICK HERE {{ colnum }}</button>
+          <script src="{% static 'core/ML_util.js' %}"></script>
+          <button id="temp_button" class="new_button" type="button" onclick="tempButtonFunction('temp_button')">TEMP BUTTON</button>
+        </div>  <!-- Container 1 -->
+
+
+        <div class="container" style="height: 500px; overflow: scroll; width: 1500px;">  <!-- Container 2 -->
+          <table class="table table-bordered table-striped table-sm">
+
+              <!-- Column Naming -->
+                   <thead>
+                   <tr style="box-sizing: border-box;" id="header_table">  <!-- role="row" style="position: absolute;" -->
+                       {% for column in columns %}
+                           <th scope="col" style="position: sticky; top: 0; background: var(--mdb-body-bg); padding: 0px;">
+                               <button class="btn btn-primary dropdown-toggle" id={{column}} role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%; height: 100%;">
+                                    {{ column }} </button>
+                                <ul class="dropdown-menu" aria-labelledby={{column}}> <!-- dropdownMenuLink_predictor -->
+                                    <li><button class="dropdown-item" type="button" onclick="isPredictor('red', {{column}}, {{predictor_response}})">Response</button></li>
+                                    <li><button class="dropdown-item" type="button" onclick="isPredictor('blue', {{column}}, {{predictor_response}})">Predictor</button></li>
+                                </ul>
+                           </th>
+                       {% endfor %}
+                   </tr>
+                   </thead>
+                <!-- End Column Naming -->
+
+        <!-- Data Entry -->
+            <ul class="nav nav-pills nav-stacked anyClass">
+            <tbody>
+                {% for entry in final_data %}
+                    <tr>
+                        {% for value in entry.values %}
+                            {% if value != entry.index %}
+                                <td scope="col" width="11.11%">{{ value }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </ul>
+        <!-- End Data Entry -->
+          </table>
+         </div> <!-- Container 2 -->
+<!---------------------------------------------------------------------------------------------------------------->
+<!--
+    <div class="container">
+        <button id="renderButton" class="new_button" type="button" onclick="renderFunction({{predictor_response}})">
+            Render
+        </button>
+    </div>
+
+
+    <form action="{% url path.to.request_page %}" method="POST">
+        <input id="newRenderButton" type="button" value="Click" />
+    </form>
+
+   <input id="submit" type="button" value="Click" data_url/>
+    -->
+
+
+
+    {% else %}
+        <h2 class="text-center" style="height: 43px;">Failed!</h2>
+
+
+    {% endif %}
+
+
+
+
+{% endblock content %}
+
+
+
+
