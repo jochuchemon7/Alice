@@ -1,0 +1,241 @@
+{% extends 'Base/amicia_base.html' %}
+
+
+
+{% block content %}
+
+
+
+{% if title %}
+
+    <!-- CDN MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/> <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/> <!-- Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css" rel="stylesheet"/> <!-- MDB -->
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
+
+<main role="main">
+<div class="container">
+
+
+<div class="container" style="transform: translateX(-10px);">  <!-- Container 1 -->
+
+  <h2 class="text-center" style="height: 40px;"></h2>
+  <h2 class="text-center 10px">{{ title }}</h2>
+
+  <div class="container" style="width: 1500px;">
+      <table class="table table-bordered table-sm">
+
+        <!-- Column Naming -->
+            <thead>
+            <tr>  <!-- role="row" style="position: absolute;" -->
+                {% for column in columns %}
+                    <th scope="col" width="11.11%">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+        <!-- End Column Naming -->
+      </table>
+  </div>
+
+</div>  <!-- Container 1 -->
+
+
+<div class="container" style="height: 500px; overflow: scroll; width: 1500px;">  <!-- Container 2 -->
+  <table class="table table-bordered table-striped table-sm">
+
+      <!-- Column Naming -->
+            <thead style="static">
+            <tr>  <!-- role="row" style="position: absolute;" -->
+                {% for column in columns %}
+                    <th scope="col" width="11.11%">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+        <!-- End Column Naming -->
+
+<!-- Data Entry -->
+    <ul class="nav nav-pills nav-stacked anyClass">
+    <tbody>
+        {% for entry in final_data %}
+            <tr>
+                {% for value in entry.values %}
+                    {% if value != entry.index %}
+                        <td scope="col" width="11.11%">{{ value }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </ul>
+<!-- End Data Entry -->
+  </table>
+ </div> <!-- Container 2 -->
+
+
+</div>
+</main>
+<!-- End of Tabular Data -->
+
+
+<!-- Start of Data Analysis Options -->
+<div class="container" style="transform: translateX(-10px); ">
+<h2 class="text-center" style="height: 60px;"></h2>
+<div class="row">
+
+    <div class="col-4">
+        <div class="container">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Machine Learning Models</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'Linear_Regression'  %}">Linear Regression</a>
+                 {% block model %}
+                 {% endblock model %}
+                <a class="dropdown-item" href="">Logistic Regression</a>
+                <a class="dropdown-item" href="">K-Nearest Neighbors</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="container">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Data Plotting and Graphing</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                <a class="dropdown-item" href="">Plotting Sample</a>
+                <a class="dropdown-item" href="">Graphing Sample</a>
+                <div class="dropdown-divider"></div>
+                <div class="d-md-flex align-items-start justify-content-start">
+
+                    <div>
+                        <div class="dropdown-header">Plotting</div>
+                        <a class="dropdown-item" href="">Linear Graph</a>
+                        <a class="dropdown-item" href="">Dot Plot</a>
+                        <a class="dropdown-item" href="">3-D Plotting</a>
+                    </div>
+
+                    <div>
+                        <div class="dropdown-header">Graphing </div>
+                        <a class="dropdown-item" href="">Histogram</a>
+                        <a class="dropdown-item" href="">Density Functions</a>
+                        <a class="dropdown-item" href="">Heat-Map Plotting</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="container">
+            <button type="button" class="btn btn-primary btn-lg">Report Generator</button>
+        </div>
+    </div>
+
+
+<h2 class="text-center" style="height: 100px;"></h2>
+
+
+</div>
+</div>
+<!-- End of Data Analysis Options -->
+
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------->
+<h2 class="text-center" style="height: 80px;"></h2>
+<nav class="navbar navbar-light bg-light navbar-expand-lg" id="myNavbar">
+
+
+ <div class="collapse navbar-collapse" id="mainNav">
+  <ul class="navbar-nav ml-auto nav-fill">
+
+
+
+   <li class="nav-item px-4 dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="servicesDropdown">
+     <a class="dropdown-item" href="#">What we do</a>
+     <a class="dropdown-item" href="#">How we fit your needs</a>
+     <div class="dropdown-divider"></div>
+     <div class="d-md-flex align-items-start justify-content-start">
+      <div>
+       <div class="dropdown-header">Development</div>
+       <a class="dropdown-item" href="#">Bespoke software</a>
+       <a class="dropdown-item" href="#">Mobile apps</a>
+       <a class="dropdown-item" href="#">Websites</a>
+      </div>
+      <div>
+       <div class="dropdown-header">Professional Services</div>
+       <a class="dropdown-item" href="#">Project rescue</a>
+       <a class="dropdown-item" href="#">Source code recovery</a>
+       <a class="dropdown-item" href="#">Application support &amp; maintenance</a>
+      </div>
+      <div>
+       <div class="dropdown-header">Fixed Price Services</div>
+       <a class="dropdown-item" href="#">Add cookie consent</a>
+       <a class="dropdown-item" href="#">Add captcha</a>
+       <a class="dropdown-item" href="#">Add core data</a>
+       <a class="dropdown-item" href="#">Custom error pages</a>
+       <a class="dropdown-item" href="#">Contact form creation</a>
+       <a class="dropdown-item" href="#">Automated backups</a>
+       <a class="dropdown-item" href="#">Image to HTML</a>
+      </div>
+     </div>
+    </div>
+   </li>
+
+
+  </ul>
+ </div>
+</nav>
+<!-- ------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Actions List -->
+<!---------------------------------------------------------------------------------------------------------------->
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------->
+
+
+
+
+{% else %}
+<main role="main">
+<div class="jumbotron jumbotron-fluid">
+
+    <div class="container">
+        <div class="hero-unit">
+
+            <div class="container-fluid">
+                <h3>Upload Your Data!</h3>
+            </div>
+
+            <div class="container-fluid left">
+                <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="pagination-right">
+                    <ul>
+                        <input type="submit" class="button btn btn-large " value="Submit">
+                    </ul>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</main>
+{% endif %}
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile" id="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if size %}  <!-- form.is_valid -->
+    <!-- <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p> -->
+    <h1>Shape of Data Set: {{ size }}</h1>
+    <p>Valid Form!</p>
+  {% endif %}
+
+  <p><a>Return to home</a></p>
+{% endblock %}
+
+
+
+
+

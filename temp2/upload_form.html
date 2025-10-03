@@ -1,0 +1,77 @@
+{% load static %}
+<!-- Write HTML code here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TableView - Startup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<!-- Body -->
+
+{% if title %}
+
+<h1>Valid Form!</h1>
+<h2>Shape of the Data Set: </h2><p>{{ shape }}</p>
+
+<h2>Data</h2>
+<p>{{ data }}</p>
+
+<h2>Data Type: </h2><p>{{ data_type }}</p>
+
+<h2>Final Data:</h2>
+<p>final_data</p>
+
+<h2>Columns: </h2>
+<p>{{ columns }}</p>
+
+<!-- Column Naming -->
+<div class="container">
+  <h2 class="text-center"><u>{{ title }}</u></h2>
+  <table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        {% for column in columns %}
+            <td>{{ column }}</td>
+        {% endfor %}
+    </tr>
+    </thead>
+<!-- End Column Naming -->
+
+<!-- Data Entry -->
+    <tbody>
+        {% for entry in final_data %}
+            <tr>
+                {% for value in entry.values %}
+                    {% if value != entry.index %}
+                        <td>{{ value }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- End of Data Entry -->
+
+{% else %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endif %}
+
+<!-- End of Body -->
+</body>
+</html>
+
+
+

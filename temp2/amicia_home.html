@@ -1,0 +1,90 @@
+{% extends 'Base/amicia_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome to Amicia!</h1>
+          <p>Generate data reports, visualize, wrangle, and analyse your data using powerful techniques and machine learning algorithms!</p>
+          <p><a href="{% url 'amicia_upload' %}" class="btn btn-primary btn-large" methods="POST">Get Started »</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Generate Reports</h2>
+            <p>You can use Amicia to perform professional designed and build data reports, that make use of tables, graphs, charts, metrics and results on whatever type of data you wish to work with! </p>
+            <p><a class="btn btn-secondary" href="{% url 'DataReportSample' %}" role="button">View Data Report Example &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Machine Learning </h2>
+            <p>With Amicia you are also able to use machine learning models to work with your data and get suggestions on what would work best for your data and requirements </p>
+            <p><a class="btn btn-secondary" href="{% url 'MachineLearningSample'  %}" role="button">View Machine Learning Example &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Data Visualization</h2>
+            <p>With Amicia you can easily plot all types of graphs with your data and visualize it with ease. Linear graphs, histograms, plots, heatmaps, and more! </p>
+            <p><a class="btn btn-secondary" href="{% url 'DataVisualizationSample' %}" role="button">View Data Visualization Example &raquo;</a></p>
+          </div>
+        </div>
+
+
+      <hr class="featurette-divider">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Select Existing Data. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Enter your designated id for your data.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          </div>
+          <div class="col-md-5">
+              <p><a href="{% url 'existing_data' %}" class="btn btn-primary btn-large" methods="POST">Find</a></p>
+          </div>
+        </div>
+
+
+      <hr class="featurette-divider">
+      </div> <!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+    <footer class="container">
+      <p>&copy; Company 2017-2018</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+{% endblock content %}
